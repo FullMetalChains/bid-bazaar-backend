@@ -1,5 +1,8 @@
 const app = require('./app');
 const mongoose = require('mongoose');
+// const http = require('http')
+const SocketManager = require('./socket')
+
 
 const connectMongoDB = async () => {
   try {
@@ -16,7 +19,10 @@ const connectMongoDB = async () => {
 };
 
 connectMongoDB().then(() => {
-  app.listen(process.env.PORT, () => {
-    console.log(`listening on localhost:${process.env.PORT}`);
-  });
+
+  // app.listen(process.env.PORT, () => {
+  //   console.log(`listening on localhost:${process.env.PORT}`);
+  // });
+    SocketManager(app);
+  
 });
